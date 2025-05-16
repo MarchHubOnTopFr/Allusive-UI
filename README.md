@@ -1,7 +1,3 @@
-Here's a cleaned-up, more structured, and GitHub README-friendly version of your Allusive UI Library documentation. It uses Markdown formatting for clarity, hierarchy, and visual polish:
-
----
-
 # 🌌 Allusive UI Library
 
 A sleek and customizable **Roblox UI library** designed to help you create intuitive, stylish, and feature-rich interfaces for your Roblox projects.
@@ -295,7 +291,3 @@ main:load()
 
 **MIT License**
 See the [LICENSE](./LICENSE) file for details.
-
----
-
-Would you like a badge/header image or dark/light theme badge visuals added for GitHub flair?
