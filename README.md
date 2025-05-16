@@ -1,314 +1,334 @@
-🌌 Allusive UI Library
+# 🌌 Allusive UI Library
 
-A sleek, customizable, and modular UI framework for Roblox.
-Allusive UI brings elegance and power to your game's interface, with intuitive tab and module management, responsive design, and interactive components — all in a visually clean, space-themed format.
-
+Welcome to **Allusive UI Library**, a sleek and highly customizable Roblox UI library designed for creating intuitive, feature-rich user interfaces with ease and style. Whether you're building tabs, modules, dropdowns, sliders, checkboxes, or more, Allusive UI gives you a powerful, modular, and visually stunning framework to elevate your Roblox projects to the stars.
 
 ---
 
-🚀 Table of Contents
+## 🚀 Features
 
-✨ Overview
-
-🛠️ Getting Started
-
-🧠 Core Structure
-
-🎛️ UI Elements
-
-📁 Tabs
-
-📦 Modules
-
-⬇️ Dropdown
-
-🎚️ Slider
-
-☑️ Checkbox
-
-➖ Divider
-
-📜 Paragraph
-
-⌨️ Textbox
-
-🧩 Feature
-
-
-🔔 Notifications
-
-🧪 Custom Example
-
-📌 Best Practices
-
-📜 License
-
-
+* **Modular Design:** Organize UI elements into tabs and modules for clean, structured interfaces.
+* **Customizable Components:** Dropdowns, sliders, checkboxes, textboxes, and more — all with extensive customization options.
+* **Config Management:** Easily save and load user preferences.
+* **In-Game Notifications:** Inform players with beautiful, animated notifications.
+* **Responsive UI:** Automatically scales based on device and screen size.
+* **Flexible Callbacks:** Respond to user input with customizable functions.
+* **Space-Age Aesthetic:** Clean, modern UI with cosmic vibes.
 
 ---
 
-✨ Overview
+## 📦 Installation & Usage
 
-Allusive UI is a modular and stylish interface library made for Roblox developers who want a clean, responsive, and powerful UI. Built to scale and perform across devices, it supports:
+Load the library with:
 
-🚀 Tabs & Modules for structured layout
-
-🎨 Customizable UI elements: dropdowns, sliders, checkboxes, and more
-
-💾 Persistent configurations
-
-🔔 In-game notifications
-
-📱 Device- and screen-responsive scaling
-
-
-
----
-
-🛠️ Getting Started
-
+```lua
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/MarchHubOnTopFr/Allusive-UI/refs/heads/main/Source.lua"))()
 local main = Library.new()
-main:load() -- Initialize UI
 
-
----
-
-🧠 Core Structure
-
-Function	Description	Params	Returns
-
-Library.new()	Initializes a new UI instance.	None	main instance
-Library:load()	Loads and renders the UI.	None	None
-Library:get_screen_scale()	Gets current screen scale.	None	number
-Library:get_device()	Detects current device.	None	string
-Library:SendNotification(settings)	Sends an in-game notification.	{title, text, duration}	None
-Library:removed(callback)	Callback on UI destroy.	function	None
-Library:flag_type(flag, type)	Sets a flag type.	flag, type	None
-Library:remove_table_value(tbl, val)	Removes value from table.	table, value	None
-Library:create_ui()	Initializes framework manually.	None	None
-Library:UIVisiblity()	Toggles visibility.	None	None
-Library:change_visiblity(state)	Sets UI visibility.	boolean	None
-Library:update_tabs(tab)	Refreshes a tab.	TextButton	None
-Library:update_sections(left, right)	Refreshes section contents.	ScrollingFrame, ScrollingFrame	None
-
-
+main:load() -- Initialize the UI
+```
 
 ---
 
-🎛️ UI Elements
+## 🌠 Table of Contents
 
-📁 Tabs
+* [Overview](#-overview)
+* [Core Structure](#-core-structure)
+* [UI Elements](#-ui-elements)
 
-local tab = main:create_tab("Combat", "rbxassetid://123456")
-
-Function	Description
-
-main:create_tab(title, icon)	Creates a new tab.
-
-
+  * [Tabs](#tabs)
+  * [Modules](#modules)
+  * [Dropdown](#dropdown)
+  * [Slider](#slider)
+  * [Checkbox](#checkbox)
+  * [Divider](#divider)
+  * [Paragraph](#paragraph)
+  * [Textbox](#textbox)
+  * [Feature](#feature)
+* [Notifications](#notifications)
+* [Custom Example](#custom-example)
+* [Best Practices](#best-practices)
+* [License](#license)
 
 ---
 
-📦 Modules
+## ✨ Overview
 
-local mod = tab:create_module({
-  title = "Aimbot", flag = "Aimbot", description = "Locks onto targets", section = "left",
-  callback = function(enabled) print("Aimbot:", enabled) end
+The Allusive UI Library simplifies complex UI creation with a modular system organized into tabs and modules. It supports various interactive components and persistent user preferences through an easy-to-use configuration system.
+
+---
+
+## 🛰 Core Structure
+
+| Function                                   | Description                                | Parameters                       | Returns       |
+| ------------------------------------------ | ------------------------------------------ | -------------------------------- | ------------- |
+| `Library.new()`                            | Creates a new UI instance                  | None                             | Main instance |
+| `Library:load()`                           | Loads the UI and config                    | None                             | None          |
+| `Library:get_screen_scale()`               | Returns UI scale based on screen size      | None                             | Number        |
+| `Library:get_device()`                     | Detects the device type (PC, Mobile, etc.) | None                             | String        |
+| `Library:SendNotification(settings)`       | Displays a notification                    | `{title, text, duration}`        | None          |
+| `Library:removed(action)`                  | Registers a callback on UI destruction     | `function`                       | None          |
+| `Library:flag_type(flag, type)`            | Sets a config flag type                    | `flag, type`                     | None          |
+| `Library:remove_table_value(table, value)` | Removes a value from a table               | `table, value`                   | None          |
+| `Library:create_ui()`                      | Initializes the UI framework               | None                             | None          |
+| `Library:UIVisiblity()`                    | Toggles UI visibility                      | None                             | None          |
+| `Library:change_visiblity(state)`          | Sets UI visibility explicitly              | `boolean`                        | None          |
+| `Library:update_tabs(tab)`                 | Updates tab appearance                     | `TextButton`                     | None          |
+| `Library:update_sections(left, right)`     | Updates module sections                    | `ScrollingFrame, ScrollingFrame` | None          |
+
+---
+
+## 🪐 Config Management
+
+| Function                    | Description              | Parameters          | Returns     |
+| --------------------------- | ------------------------ | ------------------- | ----------- |
+| `Config:save(file, config)` | Saves configuration data | `file_name, config` | None        |
+| `Config:load(file, config)` | Loads configuration data | `file_name, config` | Config data |
+
+---
+
+## 🛸 UI Elements
+
+### Tabs
+
+Organize your modules into tabs.
+
+```lua
+local tab = main:create_tab(title, icon)
+```
+
+* **title:** string — Tab name
+* **icon:** string (asset ID) — Tab icon
+
+Returns: `TabManager`
+
+### Modules
+
+Create containers for UI elements inside tabs.
+
+```lua
+local module = tab:create_module({
+  title = "Module Title",
+  flag = "Unique_Flag",
+  description = "Description",
+  section = "left" or "right",
+  callback = function(value) end
 })
+```
 
-Function	Description
+Returns: `ModuleManager`
 
-Tab:create_module(settings)	Adds a module to tab.
+### Dropdown
 
+Select one or more options from a list.
 
-
----
-
-⬇️ Dropdown
-
-local dd = mod:create_dropdown({
-  title = "Target", flag = "Target_Part",
-  options = {"Head", "Torso", "Legs"},
-  multi_dropdown = false, maximum_options = 1,
-  callback = function(opt) print("Selected:", opt) end
+```lua
+local dropdown = module:create_dropdown({
+  title = "Dropdown Title",
+  flag = "Dropdown_Flag",
+  options = {"Option1", "Option2"},
+  multi_dropdown = true/false,
+  maximum_options = number,
+  callback = function(value) end
 })
+```
 
-Extra Functions
+**Extra Functions:**
 
-Dropdown:update(option) – Manually updates selected option.
-Dropdown:unfold_settings() – Toggles dropdown open/close.
-Dropdown:New(value) – Adds a new option.
+* `dropdown:update(option)` — Update selected option.
+* `dropdown:unfold_settings()` — Toggle dropdown visibility.
+* `dropdown:New(value)` — Add a new option.
 
+Returns: `DropdownManager`
 
+### Slider
 
----
+Select numeric values in a range.
 
-🎚️ Slider
-
-local slider = mod:create_slider({
-  title = "Speed", flag = "Speed_Setting", minimum_value = 1,
-  maximum_value = 100, value = 50, round_number = true,
-  callback = function(v) print("Speed:", v) end
+```lua
+local slider = module:create_slider({
+  title = "Slider Title",
+  flag = "Slider_Flag",
+  maximum_value = 100,
+  minimum_value = 0,
+  value = 50,
+  round_number = true/false,
+  callback = function(value) end
 })
+```
 
-Extra Functions
+**Extra Functions:**
 
-Slider:set_percentage(%) – Set value by percent.
-Slider:update() – Refresh UI display.
-Slider:input() – Handle user slider interaction.
+* `slider:set_percentage(percentage)` — Set slider by percentage.
+* `slider:update()` — Refresh slider display.
+* `slider:input()` — Process user input.
 
+Returns: `SliderManager`
 
+### Checkbox
 
----
+Toggle boolean settings.
 
-☑️ Checkbox
-
-mod:create_checkbox({
-  title = "Enable Crits", flag = "Enable_Crits",
-  callback = function(v) print("Criticals:", v) end
+```lua
+module:create_checkbox({
+  title = "Checkbox Title",
+  flag = "Checkbox_Flag",
+  callback = function(value) end
 })
+```
 
-Simple boolean toggle, no extra functions.
+Returns: None
 
+### Divider
 
----
+Visual separator between elements.
 
-➖ Divider
+```lua
+module:create_divider({})
+```
 
-mod:create_divider({})
+Returns: None
 
-Purely visual, used to separate elements in modules.
+### Paragraph
 
+Display static text or info.
 
----
-
-📜 Paragraph
-
-mod:create_paragraph({
-  title = "Warning", text = "Using this may be risky."
+```lua
+module:create_paragraph({
+  title = "Paragraph Title",
+  text = "Paragraph content here."
 })
+```
 
-Shows static or informational text.
+Returns: None
 
+### Textbox
 
----
+Input custom text.
 
-⌨️ Textbox
-
-local box = mod:create_textbox({
-  title = "Username", placeholder = "Enter name...",
-  flag = "User_Input", callback = function(text) print("Name:", text) end
+```lua
+local textbox = module:create_textbox({
+  title = "Textbox Title",
+  placeholder = "Enter text...",
+  flag = "Textbox_Flag",
+  callback = function(text) end
 })
+```
 
-Extra Functions
+**Extra Functions:**
 
-Textbox:update_text(text) – Programmatically change the textbox content.
+* `textbox:update_text(text)` — Update textbox content.
 
+Returns: `TextboxManager`
 
+### Feature
+
+Custom feature with flexible functionality.
+
+```lua
+module:create_feature(settings)
+```
+
+Settings depend on implementation.
 
 ---
 
-🧩 Feature (Advanced)
+## 🔔 Notifications
 
-mod:create_feature({
-  -- Custom implementation here
-})
+Display in-game notifications.
 
-Dynamic features – behavior defined entirely by developer.
-
-
----
-
-🔔 Notifications
-
+```lua
 Library.SendNotification({
-  title = "Saved!", text = "Your settings are saved.", duration = 3
+  title = "Notification Title",
+  text = "Message goes here",
+  duration = seconds
 })
-
-title: Notification header
-
-text: Message content
-
-duration: Display time (in seconds)
-
-
+```
 
 ---
 
-🧪 Custom Example
+## 👨‍🚀 Custom Example
 
+```lua
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/MarchHubOnTopFr/Allusive-UI/refs/heads/main/Source.lua"))()
 local main = Library.new()
 
 -- Tabs
-local combat_tab = main:create_tab("Combat", "rbxassetid://123456")
-local utility_tab = main:create_tab("Utility", "rbxassetid://654321")
+local combat_tab = main:create_tab("Combat", "rbxassetid://76499042599127")
+local utility_tab = main:create_tab("Utility", "rbxassetid://126017907477623")
 
 -- Combat Module
 local aimbot = combat_tab:create_module({
-  title = "Aimbot", flag = "Aimbot", description = "Lock on enemies",
-  section = "left", callback = function(v)
-    print("Aimbot:", v)
-    Library.SendNotification({title = "Aimbot", text = v and "Enabled" or "Disabled", duration = 2})
+  title = "Aimbot",
+  flag = "Aimbot",
+  description = "Locks onto enemies",
+  section = "left",
+  callback = function(value)
+    print("Aimbot enabled:", value)
+    Library.SendNotification({title = "Aimbot", text = value and "Enabled!" or "Disabled!", duration = 3})
   end
 })
 
 aimbot:create_dropdown({
-  title = "Target", flag = "Target", options = {"Head", "Torso", "Legs"},
-  multi_dropdown = false, maximum_options = 1,
+  title = "Target Part",
+  flag = "Target_Part",
+  options = {"Head", "Torso", "Random"},
+  multi_dropdown = false,
+  maximum_options = 1,
   callback = function(value) print("Targeting:", value) end
 })
 
 aimbot:create_slider({
-  title = "Sensitivity", flag = "Aim_Sens", maximum_value = 100, minimum_value = 1, value = 50,
-  round_number = true, callback = function(val) print("Sens:", val) end
+  title = "Aimbot Sensitivity",
+  flag = "Aimbot_Sensitivity",
+  maximum_value = 100,
+  minimum_value = 10,
+  value = 50,
+  round_number = true,
+  callback = function(value) print("Sensitivity:", value) end
 })
 
 aimbot:create_checkbox({
-  title = "Silent Aim", flag = "Silent_Aim",
-  callback = function(v) print("Silent:", v) end
+  title = "Silent Aim",
+  flag = "Silent_Aim",
+  callback = function(value) print("Silent Aim:", value) end
 })
 
 -- Utility Module
 local speedhack = utility_tab:create_module({
-  title = "Speed Hack", flag = "Speed_Hack",
-  description = "Increases movement speed", section = "right",
-  callback = function(v) print("Speed Hack Enabled:", v) end
+  title = "Speed Hack",
+  flag = "Speed_Hack",
+  description = "Increases player speed",
+  section = "right",
+  callback = function(value) print("Speed Hack:", value) end
 })
 
 speedhack:create_paragraph({
-  title = "Info", text = "Use responsibly!"
+  title = "Info",
+  text = "Use responsibly to avoid detection."
 })
 
 speedhack:create_textbox({
-  title = "Speed Value", placeholder = "Enter speed...", flag = "Speed_Val",
-  callback = function(txt) print("Speed Set To:", txt) end
+  title = "Speed Value",
+  placeholder = "Enter speed...",
+  flag = "Speed_Value",
+  callback = function(text) print("Speed set to:", text) end
 })
 
--- Launch
 main:load()
-
-
----
-
-📌 Best Practices
-
-Structure Smart: Use tabs/modules to categorize features cleanly.
-
-Unique Flags: Every element must have a unique flag to persist values.
-
-Callback Testing: Ensure your logic works across all devices/states.
-
-Scale Responsively: Use Library:get_screen_scale() to adapt layouts.
-
-Notify Users: Give clear feedback through SendNotification.
-
-
+```
 
 ---
 
-📜 License
+## 💡 Best Practices
 
-MIT License.
-Feel free to use, modify, and distribute with credit.
+* **Organize:** Group related settings logically into modules and tabs.
+* **Unique Flags:** Use unique flags for config saving.
+* **Test Callbacks:** Handle all input edge cases.
+* **Responsive UI:** Use `Library:get_screen_scale()` for adaptable UI.
+* **Notify Users:** Use notifications for feedback.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
