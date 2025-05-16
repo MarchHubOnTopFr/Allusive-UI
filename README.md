@@ -44,7 +44,7 @@ The **Allusive UI Library** simplifies the creation of complex UIs in Roblox by 
 ## 🚀 Getting Started
 
 ```lua
-local Library = require(game.ReplicatedStorage.AllusiveUI) -- Adjust path if needed
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/MarchHubOnTopFr/Allusive-UI/refs/heads/main/Source.lua"))()
 local main = Library.new()
 main:load()
 ```
@@ -203,7 +203,7 @@ Library.SendNotification({
 ## 🧪 Custom Example
 
 ```lua
-local Library = require(game.ReplicatedStorage.AllusiveUI)
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/MarchHubOnTopFr/Allusive-UI/refs/heads/main/Source.lua"))()
 local main = Library.new()
 
 -- Tabs
